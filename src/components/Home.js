@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ButtonGroup, ButtonToolbar, Button} from "reactstrap";
+import { ButtonGroup, ButtonToolbar, Button, Badge} from "reactstrap";
 import { MdViewList, MdGridView, MdShoppingCart, MdOutlineSortByAlpha} from 'react-icons/md';
 import { AiOutlinePlus, AiOutlineMinus} from 'react-icons/ai';
 import ReactSearchBox from "react-search-box";
@@ -26,8 +26,8 @@ function Home(props){
         setNavBarOpen(!isNavbarOpen);
     }
     return (
-            <div className="container-fluid">
-                <div className="row justify-content-between justify-content-around">                
+            <div className="container">
+                <div className="row">                
                     <div className="col-12 col-md-6">
                         <ButtonToolbar>
                             <ButtonGroup>
@@ -51,8 +51,8 @@ function Home(props){
                             callback={(record) => console.log(record)}
                         />
                     </div> */}
-                    <div className="col-12 col-md-4">
-                        <ButtonToolbar className="ml-auto">
+                    <div className="col-12 offset-md-2 col-md-4">
+                        <ButtonToolbar className="justify-content-end">
                             <ButtonGroup>
                                 <Button className="genericBtns toolBarUIBtns"><MdViewList className="icons"></MdViewList></Button>
                                 <Button className="genericBtns toolBarUIBtns"><MdGridView className="icons"></MdGridView></Button>
@@ -66,22 +66,22 @@ function Home(props){
                         </ButtonToolbar>
                     </div>
                 </div>
-                <div className="row justify-content-between justify-content-around m-5">
+                <div className="row mt-5">
                         {data.map(d => (
                             <div className="row mb-2 align-items-center">
-                                <div className="col-3">
+                                <div className="col-2">
                                     <img src="" alt="Image"></img>
                                 </div>
-                                <div className="col-9 col-md-3">
+                                <div className="col-10 col-md-4">
                                     <div>{d.company}</div>
                                     <div>{d.product}</div>
                                 </div>
-                                <div className="col-12 col-md-6 mb-2">
-                                    <div className="d-flex align-items-center justify-content-center">
-                                        <div className="mr-5">&#8377; {d.price}</div>
-                                        <div className="ml-5">{d.weight} Kgs.</div>
+                                <div className="col-12 offset-md-3 col-md-3 mb-2">
+                                    <div className="d-flex align-items-center justify-content-around">
+                                        <div className="">&#8377; {d.price}</div>
+                                        <div className="">{d.weight} Kgs.</div>
                                     </div>
-                                    <div className="d-flex align-items-center justify-content-center m-2">
+                                    <div className="d-flex align-items-center justify-content-around m-2">
                                         <ButtonGroup>
                                             <Button className="btn btn-sm"><AiOutlineMinus className="icons"></AiOutlineMinus></Button>
                                             <Button className="btn btn-sm">Add To Cart</Button>
