@@ -20,3 +20,53 @@
 .icons{
     font-size: larger;
 }
+
+.iconBtnText{
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+}
+
+.cardHeader, .cardFooter{
+    background-color: #fff;
+    border: none;
+}
+
+.cardTitle{
+    font-size: large;
+    font-weight: bold;
+    margin: 0;
+}
+
+.cardSubtitle{
+    font-size: small;
+    font-weight: lighter;
+    margin: 0;
+}
+
+#quantitySelect{
+    width: 50%;
+}
+
+#cartBtn{
+    height: 2.375rem;
+    width: 50%;
+    margin-left: 0.5rem;
+}
+
+.labelTop{
+    font-weight: 700;
+    font-size: 1.5em;
+}
+.labelBottom{
+    font-weight: 700;
+    font-size: 1em;
+}
+
+.weightCardPart{
+    width: 50%;
+}
+
+.priceCardPart{
+    width: 50%;
+    margin-left: 0.5rem;
+}
