@@ -1,83 +1,134 @@
 import React, { useEffect, useState } from "react";
-import { ButtonGroup, ButtonToolbar, Button, Card, CardImg, CardHeader, CardTitle, CardSubtitle, CardBody, CardText, Input, Badge} from "reactstrap";
-import { MdShoppingCart, MdOutlineSortByAlpha} from 'react-icons/md';
+import { ButtonGroup, ButtonToolbar, Button, Card, CardImg, CardHeader, CardTitle, CardSubtitle, CardBody, CardText, Input, Badge, InputGroup} from "reactstrap";
+import { MdShoppingCart, MdSearch} from 'react-icons/md';
 
 function Home(props){
-    const [isNavbarOpen, setNavBarOpen] = useState(false);
-    const [quantity, setQuantity] = useState([]);
-    const [cart, setCart] = useState([]);
-    const [cartCount, setCartCount] = useState(0);
 
-    useEffect(() => {
-        console.log(cart, quantity);
-    }, [cart, quantity]);
-
-    const changeQuantity = (e, d) => {
-        setQuantity([...quantity, {
-            id: d.id,
-            quantity: e.target.value
-        }]);
-    }
-
-    const addToCart = (e, d) => {
-        let itemQuantity = quantity.filter(q => q.id == d.id).quantity;
-        setCartCount(prev => prev + itemQuantity);
-        setCart([...cart, {...d, quantity: itemQuantity}]);
-    }
-
-    const data = [{
+    const rawData = [{
         id: 1,
         company: "Company 1",
-        product: "Product 1",
-        price: "5000",
+        product: "Product A",
+        price: "500",
         weight: "5",
         availableQuantity: 5,
         description: "This is a sample product description with all the details about the product to be displayed to the user"
     },{
         id: 2,
         company: "Company 2",
-        product: "Product 2",
-        price: "5000",
+        product: "Product B",
+        price: "1000",
         weight: "10",
         availableQuantity: 4,
         description: "This is a sample product description with all the details about the product to be displayed to the user"
     },{
         id: 3,
         company: "Company 3",
-        product: "Product 3",
+        product: "Product C",
         price: "5000",
         weight: "15",
         availableQuantity: 3,
         description: "This is a sample product description with all the details about the product to be displayed to the user"
     }];
+
+    const [isNavbarOpen, setNavBarOpen] = useState(false);
+    const [quantity, setQuantity] = useState({});
+    const [cart, setCart] = useState([]);
+    const [cartCount, setCartCount] = useState(0);
+    const [data, setData] = useState(rawData);
+
+    useEffect(() => {
+        console.log(data);
+    }, [data]);
+
+    const sortByName = (isAtoZ) => {
+         console.log(data.sort((a, b) => {
+            if(a.product.toLowerCase() < b.product.toLowerCase()){
+                if(isAtoZ)
+                    return -1;
+                else
+                    return 1;
+            }
+            if(b.product.toLowerCase() < a.product.toLowerCase()){
+                if(isAtoZ)
+                    return 1;
+                else
+                    return -1;
+            }
+            return 0;
+         }));
+    }
+    const sortByPrice = (isHighToLow) => {
+        console.log(data.sort((a, b) => {
+            if(isHighToLow)
+                return a.price - b.price;
+            else
+                return b.price - a.price;
+            return 0;
+         }));
+    }
+
+    const changeQuantity = (e, d) => {
+        let isObjExist = d.id in quantity;
+        if(isObjExist){
+            quantity[d.id] += parseInt(e.target.value);  
+        }
+        else{
+            quantity[d.id] = parseInt(e.target.value);
+        }
+    }
+
+    const addToCart = (e, d) => {
+        let itemQuantity = d.id in quantity ? quantity[d.id] : 0;
+        let isObjExist = cart.filter(c => c.id === d.id);
+        let isQuantitySelected = d.id in quantity;
+        if(isQuantitySelected){
+            if(isObjExist.length > 0){
+                setCart(cart);
+            }
+            else{
+                setCart([...cart, d]);
+            }
+            setCartCount(Object.values(quantity).reduce((total, i) => total + i));
+        }
+        else{
+            alert("Please select quantity");
+        }
+    }
+
     const toggleNavbar = () => {
         setNavBarOpen(!isNavbarOpen);
     }
     return (
             <div className="container">
                 <div className="row mt-3">                
-                    <div className="col-12 col-md-8 d-flex">
-                        <div className="">
-                            <Button outline active className="leftFilterBtn">Name: A-Z</Button>
-                            <Button outline className="rightFilterBtn">Name: Z-A</Button>
+                    <div className="col-12 col-md-3 d-flex">
+                        <div className="w-100">
+                            <Button outline active className="leftFilterBtn w-50" onClick={() => sortByName(true)}>Name: A-Z</Button>
+                            <Button outline className="rightFilterBtn w-50" onClick={() => sortByName(false)}>Name: Z-A</Button>
                         </div>
-                        <div>
-                            <Button outline active className="leftFilterBtn">Price: Low to High</Button> 
-                            <Button outline className="rightFilterBtn">Price: High to Low</Button>
+                    </div>
+                    <div className="col-12 col-md-3 d-flex">
+                        <div className="w-100">
+                            <Button outline active className="leftFilterBtn w-50" onClick={() => sortByPrice(false)}>Price: Low to High</Button> 
+                            <Button outline className="rightFilterBtn w-50" onClick={() => sortByPrice(false)}>Price: High to Low</Button>
                         </div>
                     </div>                
-                    <div className="col-12 col-md-4">
-                        <ButtonToolbar className="justify-content-end">
-                            <ButtonGroup>
-                                <Button>
-                                    <div className="d-flex justify-content-center align-items-center">
-                                        <MdShoppingCart className="icons"></MdShoppingCart>
-                                        <div className="iconBtnText">Your Cart</div>
-                                        <Badge color="secondary" className="cartBadge">({cartCount})</Badge>
-                                    </div>
+                    <div className="col-12 col-md-4 d-flex align-items-center justify-content-center">                   
+                            <Input type="text" name="search" id="search" className="w-100" placeholder="Search here..."></Input>
+                            <div id="search-icon" className="d-flex align-items-center justify-content-center">
+                                <Button type="secondary" id="searchBtn">
+                                    <MdSearch className="icons"></MdSearch>
                                 </Button>
-                            </ButtonGroup>
-                        </ButtonToolbar>
+                            </div>
+                    </div>
+                    <div className="col-12 col-md-2">
+                        <Button className="w-100">
+                            <div className="d-flex justify-content-center align-items-center">
+                                <MdShoppingCart className="icons"></MdShoppingCart>
+                                <div className="iconBtnText">Your Cart</div>
+                                <span className="cartBadge">({cartCount})</span>
+                            </div>
+                        </Button>
                     </div>
                 </div>
                 <div className="row mt-5">
@@ -98,7 +149,7 @@ function Home(props){
                                         </div>
                                         <div className="d-flex text-center flex-column priceCardPart">
                                             <div className="labelTop"><sup>&#8377;</sup>{d.price}</div>
-                                            <div className="labelBottom">Price (M.R.P)</div>
+                                            <div className="labelBottom">Price</div>
                                         </div>
                                     </div>
                                     <div className="d-flex align-items-center justify-content-between mt-3">

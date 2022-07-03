@@ -1,3 +1,52 @@
+:root{
+    --primary:   #4D774E;
+    --secondary:  #9DC88D;
+    --accent: #F1B24A;  
+    --text: #fff;
+}
+
+/*Header CSS*/
+.header{
+    background-color: var(--primary);
+    color: var(--text);
+}
+
+.headerLinks{
+    color: var(--text);
+}
+.headerLinks:hover{
+    color: var(--text);
+    background-color: var(--accent);
+}
+.headerLinks:focus{
+    color: var(--text);
+    background-color: var(--accent);
+}
+
+/*BUTTONS CSS*/
+.btn-outline-secondary.active, .btn-secondary, .badge .bg-secondary{
+    background-color: var(--primary);
+    color: var(--text);
+    border-color: var(--primary);
+}
+
+.btn-outline-secondary:hover{
+    background-color: var(--primary);
+    color: var(--text);
+}
+
+.btn-secondary:hover{
+    background-color: var(--secondary);
+    border-color: var(--secondary);
+    background-image: linear-gradient(var(--primary), var(--secondary));
+    color: var(--text);
+}
+
+.btn-outline-secondary:focus{
+    background-color: var(--primary);
+    color: var(--text);
+}
+
 .rightFilterBtn{
     border-left: none;
     border-radius: 0;
@@ -7,14 +56,20 @@
     border-radius: 0;
 }
 
+
 .cartBadge{
-    height: 1rem;
     padding-left: 0;
     padding-right: 0;
+    font-size: 1rem;
 }
 
 .icons{
     font-size: larger;
+}
+
+#search-icon{
+    border: none;
+    border-radius: 0;
 }
 
 .iconBtnText{
@@ -54,7 +109,7 @@
     font-size: 1.5em;
 }
 .labelBottom{
-    font-weight: 700;
+    font-weight: lighter;
     font-size: 1em;
 }
 
@@ -67,3 +122,12 @@
     margin-left: 0.5rem;
 }
 
+#searchBtn{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+#search{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}

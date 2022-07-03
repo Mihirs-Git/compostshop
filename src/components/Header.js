@@ -8,22 +8,22 @@ function Header(props){
     }
     return (
         <React.Fragment>
-            <Navbar expand="md" dark className="bg-dark">
+            <Navbar expand="md" dark className="header">
                 <NavbarToggler onClick={toggleNavbar}></NavbarToggler>
-                <NavbarBrand>The Compost Shop</NavbarBrand>
+                <NavbarBrand>Vardhaman Khatar Depot</NavbarBrand>
                 <Collapse isOpen={isNavbarOpen} navbar className="justify-content-end">
                     <Nav pills>
                         <NavItem>
-                            <NavLink href="#">Home</NavLink>
+                            <NavLink className="headerLinks" href="#">Home</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink href="#">About</NavLink>
+                            <NavLink className="headerLinks" href="#">About</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink href="#">Contact</NavLink>
+                            <NavLink className="headerLinks" href="#">Contact</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink href="#">My Profile</NavLink>
+                            <NavLink className="headerLinks" href="#">My Profile</NavLink>
                         </NavItem>
                     </Nav>
                 </Collapse>
