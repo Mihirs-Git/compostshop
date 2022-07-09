@@ -41,7 +41,7 @@ function Home(props){
     }, [data]);
 
     const sortByName = (isAtoZ) => {
-         console.log(data.sort((a, b) => {
+        let temp = data.sort((a, b) => {
             if(a.product.toLowerCase() < b.product.toLowerCase()){
                 if(isAtoZ)
                     return -1;
@@ -55,10 +55,12 @@ function Home(props){
                     return -1;
             }
             return 0;
-         }));
+         });
+
+         setData(temp);
     }
     const sortByPrice = (isHighToLow) => {
-        console.log(data.sort((a, b) => {
+        setData(data.sort((a, b) => {
             if(isHighToLow)
                 return a.price - b.price;
             else
