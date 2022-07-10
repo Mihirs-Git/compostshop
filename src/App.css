@@ -9,6 +9,7 @@
 .header{
     background-color: var(--primary);
     color: var(--text);
+    height: 10vh;
 }
 
 .headerLinks{
@@ -130,4 +131,34 @@
 #search{
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+}
+
+/* CART CSS  */
+.cartPage{
+    /* background: linear-gradient(110deg, #BBDEFB 60%,#42A5F5  60%); */
+    background: linear-gradient(147.5deg, var(--secondary) 60%, var(--accent) 60%);  
+    height: 90vh;
+}
+
+.cartTemplate{
+    border-radius: 0.75rem;
+}
+
+.splitDiv{
+    border-radius: 0.5rem;
+}
+
+.cartTitle{
+    font-size: 1.5rem;
+    font-weight: 200;
+}
+
+.cartTitleInfo{
+    font-size: 1rem;
+    font-weight: bold;
+    /* background-color: var(--accent); */
+    width: 5rem;
+    text-align: center;
+    border-radius: 0.25rem;
+    color: var(--primary);   
 }
