@@ -144,6 +144,10 @@
     border-radius: 0.75rem;
 }
 
+.cartProductTemplate{
+    border-radius: 0.25rem;
+}
+
 .splitDiv{
     border-radius: 0.5rem;
 }
@@ -156,9 +160,39 @@
 .cartTitleInfo{
     font-size: 1rem;
     font-weight: bold;
-    /* background-color: var(--accent); */
-    width: 5rem;
-    text-align: center;
-    border-radius: 0.25rem;
-    color: var(--primary);   
+}
+
+.cartProductInfo{
+    width: 40%;
+}
+
+.cartWeightInfo{
+    width: 10%;
+}
+
+.cartPriceInfo{
+    width: 50%;
+}
+
+.cartProductName{
+    font-size: large;
+    font-weight: 500;
+}
+
+.cartProductCompany{
+    font-size: small;
+    font-weight: 400;
+}
+
+.cartProductWeight{
+    font-weight: 400;
+}
+
+.cartProductPrice{
+    font-weight: 500;
+}
+
+.cartProductTotal{
+    font-size: large;
+    font-weight: 600;
 }
