@@ -1,8 +1,13 @@
 :root{
-    --primary:   #4D774E;
-    --secondary:  #9DC88D;
+    /* --primary:   #4D774E; */
+    --primary: #191654;
+    /* --primary: #8c366c; */
+    /* --secondary:  #9DC88D; */
+    --secondary: #43c6ac;
+    /* --secondary: #6e64e7; */
     --accent: #F1B24A;  
     --text: #fff;
+    --danger: red;
 }
 
 /*Header CSS*/
@@ -10,6 +15,7 @@
     background-color: var(--primary);
     color: var(--text);
     height: 10vh;
+    border-radius: 1rem;
 }
 
 .headerLinks{
@@ -17,7 +23,7 @@
 }
 .headerLinks:hover{
     color: var(--text);
-    background-color: var(--accent);
+    background-color: var(--secondary);
 }
 .headerLinks:focus{
     color: var(--text);
@@ -39,7 +45,6 @@
 .btn-secondary:hover{
     background-color: var(--secondary);
     border-color: var(--secondary);
-    background-image: linear-gradient(var(--primary), var(--secondary));
     color: var(--text);
 }
 
@@ -136,7 +141,7 @@
 /* CART CSS  */
 .cartPage{
     /* background: linear-gradient(110deg, #BBDEFB 60%,#42A5F5  60%); */
-    background: linear-gradient(147.5deg, var(--secondary) 60%, var(--accent) 60%);  
+    background: linear-gradient(147.5deg, var(--accent) 60%, var(--secondary) 60%);  
     height: 90vh;
 }
 
@@ -193,6 +198,39 @@
 }
 
 .cartProductTotal{
-    font-size: large;
-    font-weight: 600;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.cartItemDelete{
+    background-color: #fff;
+    border: none;
+    border-left: solid 1px var(--primary);
+}
+
+.cartItemDelete:hover{
+    background-color: var(--primary);
+    color: var(--danger);
+    border-radius: 0.5rem;
+}
+
+.totalAmountTracker{
+    background-color: var(--primary);
+    border: none;
+    color: var(--text);
+    font-size: 0.85rem;
+    border-radius: 0.5rem;
+}
+
+
+.checkoutline{
+    opacity: 0.5;
+}
+
+.orderProgress{
+    height: 2rem;
+}
+
+#confirmOrderBtn{
+    font-weight: 200;
 }

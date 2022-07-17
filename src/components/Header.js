@@ -8,7 +8,7 @@ function Header(props){
     }
     return (
         <React.Fragment>
-            <Navbar expand="md" dark className="header">
+            <Navbar expand="md" dark className="header mx-md-5 mt-md-3">
                 <NavbarToggler onClick={toggleNavbar}></NavbarToggler>
                 <NavbarBrand>Vardhaman Khatar Depot</NavbarBrand>
                 <Collapse isOpen={isNavbarOpen} navbar className="justify-content-end">
